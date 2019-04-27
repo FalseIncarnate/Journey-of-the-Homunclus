@@ -35,17 +35,7 @@ public class PlayerControl : MoveableObject
 
     protected override void HandleMove() {
         base.HandleMove();
-        AttemptPickup();
-    }
-
-    void AttemptPickup() {
-        RaycastHit2D hit;
-        Vector3 origin_point = transform.position;
-        hit = Physics2D.Linecast(origin_point, origin_point, ~PICKUP_MASK);
-        if(hit && hit.collider.isTrigger) {
-            hit.transform.gameObject.GetComponent<TriggerObject>().GetTriggered();
-        }
-        
+        Trigger();
     }
 
     public override void GetHurt() {

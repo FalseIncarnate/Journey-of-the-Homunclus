@@ -12,6 +12,14 @@ public class HealthPickup : TriggerObject {
 
     public override void GetTriggered() {
         base.GetTriggered();
+        if(player_trigger) {
+            DoPlayerTrigger();
+        } else {
+            DoEnemyTrigger();
+        }
+    }
+
+    protected override void DoPlayerTrigger() {
         if(gm.AdjustHP(1)) {
             Destroy(gameObject);
         }

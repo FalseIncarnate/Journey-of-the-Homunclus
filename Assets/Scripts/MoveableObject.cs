@@ -11,8 +11,8 @@ public class MoveableObject : MonoBehaviour {
 
     internal const int NORTH = 1;
     internal const int EAST = 2;
-    internal const int SOUTH = 4;
-    internal const int WEST = 8;
+    internal const int SOUTH = 3;
+    internal const int WEST = 4;
 
     internal const int PICKUP_MASK = ~(1 << 8);
 
@@ -98,6 +98,16 @@ public class MoveableObject : MonoBehaviour {
             is_moving = false;
             return;
         }
+    }
+
+    protected void Trigger() {
+        RaycastHit2D hit;
+        Vector3 origin_point = transform.position;
+        hit = Physics2D.Linecast(origin_point, origin_point, ~PICKUP_MASK);
+        if(hit && hit.collider.isTrigger) {
+            hit.transform.gameObject.GetComponent<TriggerObject>().GetTriggered();
+        }
+
     }
 
     public virtual void GetHurt() {

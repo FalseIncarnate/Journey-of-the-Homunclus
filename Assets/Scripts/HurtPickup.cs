@@ -12,6 +12,9 @@ public class HurtPickup : TriggerObject {
 
     public override void GetTriggered() {
         base.GetTriggered();
+        if(!player_trigger) {
+            return;
+        }
         if(gm.AdjustHP(-1)) {
             Destroy(gameObject);
         }

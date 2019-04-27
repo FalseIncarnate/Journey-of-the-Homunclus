@@ -13,6 +13,8 @@ public class TriggerObject : MonoBehaviour {
     public bool active_trigger = false;
     protected bool requires_reset = false;
 
+    public bool player_trigger = false;
+
     protected int reset_counter = 0;
     internal const int RESET_RATE = 10;
 
@@ -34,30 +36,47 @@ public class TriggerObject : MonoBehaviour {
 	}
 
     public virtual void GetTriggered() {
-        if(is_pickup) {
-            return;
-        }
         if(!active_trigger) {
-            active_trigger = true;
+            CheckTrigger();
             return;
         }
     }
 
     protected void CheckTrigger() {
-        RaycastHit2D hit;
-        Vector3 origin_point = transform.position;
-        hit = Physics2D.Linecast(origin_point, origin_point, PICKUP_MASK);
-        if(hit) {
-            MoveableObject mo = hit.transform.gameObject.GetComponent<MoveableObject>();
-            if(mo) {
-                return;
+        GameObject target = GetTriggerTarget();
+        if(target) {
+            if(target.CompareTag("Player")){
+                player_trigger = true;
             }
+            active_trigger = true;
+            return;
         }
         ResetTrigger();
     }
 
+    protected GameObject GetTriggerTarget() {
+        GameObject target;
+        RaycastHit2D hit;
+        Vector3 origin_point = transform.position;
+        hit = Physics2D.Linecast(origin_point, origin_point, PICKUP_MASK);
+        if(!hit) {
+            return null;
+        }
+        target = hit.transform.gameObject;
+        return target;
+    }
+
+    protected virtual void DoPlayerTrigger() {
+        return;
+    }
+
+    protected virtual void DoEnemyTrigger() {
+        return;
+    }
+
     protected void ResetTrigger() {
         active_trigger = false;
+        player_trigger = false;
         requires_reset = false;
     }
 }
