@@ -16,6 +16,9 @@ public class PlayerControl : MoveableObject
     // Update is called once per frame
     protected override void Update() {
         base.Update();
+        if(is_moving) {
+            anim.SetTrigger("playerMoving");
+        }
         if(Input.GetKey("w")) {
             AttemptMove(NORTH);
         }
@@ -43,5 +46,9 @@ public class PlayerControl : MoveableObject
             hit.transform.gameObject.GetComponent<TriggerObject>().GetTriggered();
         }
         
+    }
+
+    public override void GetHurt() {
+        anim.SetTrigger("playerHurt");
     }
 }

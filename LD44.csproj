@@ -296,6 +296,7 @@
     <Compile Include="Assets\Scripts\HealthPickup.cs" />
     <Compile Include="Assets\Scripts\HurtPickup.cs" />
     <Compile Include="Assets\Scripts\MoveableObject.cs" />
+    <Compile Include="Assets\Scripts\PickupBase.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\SpikeStrip.cs" />
     <Compile Include="Assets\Scripts\TriggerObject.cs" />

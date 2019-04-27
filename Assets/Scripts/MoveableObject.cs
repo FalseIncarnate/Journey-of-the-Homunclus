@@ -7,6 +7,7 @@ public class MoveableObject : MonoBehaviour {
     protected GameManager gm;
     protected Collider2D myCollider;
     protected SpriteRenderer sr;
+    protected Animator anim;
 
     internal const int NORTH = 1;
     internal const int EAST = 2;
@@ -25,6 +26,7 @@ public class MoveableObject : MonoBehaviour {
         gm = FindObjectOfType<GameManager>();
         myCollider = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -96,5 +98,9 @@ public class MoveableObject : MonoBehaviour {
             is_moving = false;
             return;
         }
+    }
+
+    public virtual void GetHurt() {
+        return;
     }
 }
