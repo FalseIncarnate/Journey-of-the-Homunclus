@@ -18,6 +18,8 @@ public class TriggerObject : MonoBehaviour {
     protected int reset_counter = 0;
     internal const int RESET_RATE = 10;
 
+    protected int purchase_cost = 0;
+
 	// Use this for initialization
 	protected virtual void Start () {
         gm = FindObjectOfType<GameManager>();
@@ -78,5 +80,17 @@ public class TriggerObject : MonoBehaviour {
         active_trigger = false;
         player_trigger = false;
         requires_reset = false;
+        gm.ui.UpdateLevelText();
+    }
+
+    public void TryPurchase() {
+        if(purchase_cost >= gm.player_HP) {
+            return;
+        }
+        OnPurchase();
+    }
+
+    public virtual void OnPurchase() {
+        return;
     }
 }

@@ -31,6 +31,10 @@ public class PlayerControl : MoveableObject
         if(Input.GetKey("d")) {
             AttemptMove(EAST);
         }
+
+        if(Input.GetKeyDown("e")) {
+            PurchasePickup();
+        }
     }
 
     protected override void HandleMove() {
@@ -40,5 +44,14 @@ public class PlayerControl : MoveableObject
 
     public override void GetHurt() {
         anim.SetTrigger("playerHurt");
+    }
+
+    void PurchasePickup() {
+        RaycastHit2D hit;
+        Vector3 origin_point = transform.position;
+        hit = Physics2D.Linecast(origin_point, origin_point, ~PICKUP_MASK);
+        if(hit && hit.collider.isTrigger) {
+            hit.transform.gameObject.GetComponent<TriggerObject>().TryPurchase();
+        }
     }
 }

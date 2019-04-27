@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4968960063360668}
   - component: {fileID: 212838654356415970}
   - component: {fileID: 58261941297205584}
+  - component: {fileID: 114281762788933644}
   m_Layer: 8
   m_Name: Hurt_Pickup
   m_TagString: Untagged
@@ -56,6 +57,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114281762788933644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905168833800374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708632a4edcd4b6449d1822913fa79d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active_trigger: 0
+  player_trigger: 0
 --- !u!212 &212838654356415970
 SpriteRenderer:
   m_ObjectHideFlags: 1

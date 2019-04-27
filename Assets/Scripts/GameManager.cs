@@ -16,11 +16,20 @@ public class GameManager : MonoBehaviour {
     public int level = 1;
 
     public int sightMod = 0;
+    public int parry_chance = 5;
+
+    public GameObject[] levelArray = new GameObject[15];
+
+    protected GameObject cur_level;
 
 	// Use this for initialization
 	void Start () {
         ui = FindObjectOfType<UI_Manager>();
         pc = FindObjectOfType<PlayerControl>();
+        ui.UpdateHP();
+
+        cur_level = Instantiate(levelArray[level]);
+        ui.UpdateLevelText();
 	}
 	
 	// Update is called once per frame
@@ -52,22 +61,38 @@ public class GameManager : MonoBehaviour {
         player_MAX += amt;
         Mathf.Min(player_MAX, HP_MAX_LIMIT);
         if(player_MAX > 15) {
+            ui.HP_4.gameObject.SetActive(true);
             ui.HP_4.enabled = true;
         }
         if(player_MAX > 10) {
+            ui.HP_3.gameObject.SetActive(true);
             ui.HP_3.enabled = true;
         }
         if(player_MAX > 5) {
+            ui.HP_2.gameObject.SetActive(true);
             ui.HP_2.enabled = true;
         }
         ui.UpdateHP();
     }
 
-    public void LevelUp() {
+    public void UpdateVision(int amt) {
+        sightMod += amt;
+    }
 
+    public void UpdateParry(int amt) {
+        parry_chance += amt;
+    }
+
+    public void LevelUp() {
+        Destroy(cur_level);
+        level++;
+        cur_level = Instantiate(levelArray[level]);
+        pc.move_goal = Vector3.zero;
+        pc.transform.position = Vector3.zero;
+        ui.UpdateLevelText();
     }
 
     void GameOver() {
-
+        Application.Quit();
     }
 }

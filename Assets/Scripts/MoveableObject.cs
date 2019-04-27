@@ -16,10 +16,12 @@ public class MoveableObject : MonoBehaviour {
 
     internal const int PICKUP_MASK = ~(1 << 8);
 
-    protected bool is_moving = false;
+    internal const int ENEMY_MASK = ~(1 << 9);
+
+    public bool is_moving = false;
     protected bool is_etheral = false;
 
-    protected Vector3 move_goal;
+    public Vector3 move_goal;
 
     // Use this for initialization
     public virtual void Start () {
@@ -59,6 +61,40 @@ public class MoveableObject : MonoBehaviour {
         myCollider.enabled = true;
         if(!tr || tr == null) {
             return true;
+        }
+        return CheckEnemyDamage(tr);
+    }
+
+    protected bool CheckEnemyDamage(Transform tr) {
+        if(tr.GetComponent<MoveableObject>() != null) {
+            if(tag == "Player") {
+                if(tr.tag == "Enemy") {
+                    Debug.Log("Player killed enemy in melee!");
+                    tr.GetComponent<MoveableObject>().GetHurt();
+                    return true;
+                }
+            }
+            if(tag == "Enemy") {
+                if(tr.tag == "Player") {
+                    Debug.Log("Enemy attacked player in melee!");
+                    int parry_roll = (int)Random.Range(1, 99);
+                    if(parry_roll >= gm.parry_chance) {
+                        Debug.Log("Player parried!");
+                        GetHurt();
+                    } else {
+                        gm.AdjustHP(-1);
+                    }
+                    return false;
+                }
+                Debug.Log("Enemy duel!");
+                int chance = (int)Random.Range(1, 99);
+                if(chance < 50) {
+                    GetHurt();
+                } else {
+                    tr.gameObject.GetComponent<MoveableObject>().GetHurt();
+                }
+                return true;
+            }
         }
         Collider2D hit_collider = tr.GetComponent<Collider2D>();
         return hit_collider.isTrigger;

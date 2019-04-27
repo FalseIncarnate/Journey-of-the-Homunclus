@@ -300,6 +300,9 @@
     <Compile Include="Assets\Scripts\MoveableObject.cs" />
     <Compile Include="Assets\Scripts\PickupBase.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\ShopItems\Orb_Max_Up.cs" />
+    <Compile Include="Assets\Scripts\ShopItems\Vision_Down.cs" />
+    <Compile Include="Assets\Scripts\ShopItems\Vision_Up.cs" />
     <Compile Include="Assets\Scripts\SpikeStrip.cs" />
     <Compile Include="Assets\Scripts\TriggerObject.cs" />
     <Compile Include="Assets\Scripts\UI_Manager.cs" />

@@ -19,6 +19,8 @@ public class UI_Manager : MonoBehaviour {
     public Image HP_3;
     public Image HP_4;
 
+    public Text levelText;
+
     // Use this for initialization
     void Start () {
         gm = FindObjectOfType<GameManager>();
@@ -121,6 +123,49 @@ public class UI_Manager : MonoBehaviour {
                     HP_1.sprite = HEALTH_0;
                     break;
             }
+        }
+    }
+
+    public void UpdateLevelText() {
+        switch(gm.level) {
+            case 0:
+                levelText.text = "Move with W, A, S, D." + "\n" + "Make your way to the exit in the lower right to proceed.";
+                break;
+            case 1:
+                levelText.text = "Picking up red orbs grant health, but black rings steal it!" + "\n" + "You current health is represented by the orbs in the top left.";
+                break;
+            case 2:
+                levelText.text = "Spikes hurt you each time you step on them. Watch your step!" + "\n" + "Run out of health and it is game over!";
+                break;
+            case 3:
+                levelText.text = "Enemies will try to follow you if they see you, but aren't too smart." + "\n" + "You must get rid of all enemies to open the exit.";
+                break;
+            case 4:
+                levelText.text = "Sometimes you need to sacrifice your own health to lure an enemy." + "\n" + "If they lose sight of you, they'll wander randomly!";
+                break;
+            case 5:
+                levelText.text = "Welcome to the shop! You can trade your health for stuff!" + "\n" + "Step on an item for more info, and press E to buy!";
+                break;
+            case 6:
+                levelText.text = "Fighting enemies is risky, you might get hurt!!" + "\n" + "But if you can lure two enemies together, they'll fight each other!";
+                break;
+            default:
+                levelText.text = "";
+                break;
+        }
+    }
+
+    public void UpdateShopText(string thing, int cost) {
+        switch(thing) {
+            case "Vision_Up":
+                levelText.text = "Vision Up: Makes enemies able to see you from further away!" + "\n" + "Costs " + cost + " health.";
+                break;
+            case "Vision_Down":
+                levelText.text = "Vision Down: Reduces the range enemies can see you from." + "\n" + "Costs " + cost + " health.";
+                break;
+            case "Orb_Max_Up":
+                levelText.text = "Orb Max Up: Increases your max health by adding a new orb." + "\n" + "Costs " + cost + " health.";
+                break;
         }
     }
 }
