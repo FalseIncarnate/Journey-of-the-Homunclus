@@ -28,7 +28,7 @@ public class SpikeStrip : TriggerObject {
     protected override void DoEnemyTrigger() {
         if(!requires_reset) {
             GameObject target = GetTriggerTarget();
-            Destroy(target);
+            target.GetComponent<EnemyControl>().GetHurt();
             requires_reset = true;
         }
     }

@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour {
     public int player_HP = 1;
     public int player_MAX = 5;
 
+    internal const int HP_MAX_LIMIT = 20;
+
+    public int enemies_left = 0;
+    public int level = 1;
+
+    public int sightMod = 0;
+
 	// Use this for initialization
 	void Start () {
         ui = FindObjectOfType<UI_Manager>();
@@ -39,6 +46,25 @@ public class GameManager : MonoBehaviour {
             GameOver();
         }
         return true;
+    }
+
+    public void UpdateMax(int amt) {
+        player_MAX += amt;
+        Mathf.Min(player_MAX, HP_MAX_LIMIT);
+        if(player_MAX > 15) {
+            ui.HP_4.enabled = true;
+        }
+        if(player_MAX > 10) {
+            ui.HP_3.enabled = true;
+        }
+        if(player_MAX > 5) {
+            ui.HP_2.enabled = true;
+        }
+        ui.UpdateHP();
+    }
+
+    public void LevelUp() {
+
     }
 
     void GameOver() {

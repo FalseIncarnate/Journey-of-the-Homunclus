@@ -33,10 +33,16 @@ public class UI_Manager : MonoBehaviour {
     public void UpdateHP() {
 
         HP_1.sprite = HEALTH_BLANK;
-        HP_2.sprite = HEALTH_BLANK;
-        HP_3.sprite = HEALTH_BLANK;
-        HP_4.sprite = HEALTH_BLANK;
-        
+        if(HP_2.isActiveAndEnabled) {
+            HP_2.sprite = HEALTH_BLANK;
+        }
+        if(HP_3.isActiveAndEnabled) {
+            HP_3.sprite = HEALTH_BLANK;
+        }
+        if(HP_4.isActiveAndEnabled) {
+            HP_4.sprite = HEALTH_BLANK;
+        }
+
         if(gm.player_HP > 15) {
             HP_1.sprite = HEALTH_4;
             HP_2.sprite = HEALTH_4;

@@ -113,4 +113,5 @@ public class MoveableObject : MonoBehaviour {
     public virtual void GetHurt() {
         return;
     }
+
 }
