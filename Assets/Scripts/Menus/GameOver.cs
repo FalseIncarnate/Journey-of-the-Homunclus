@@ -39,7 +39,7 @@ public class GameOver : MonoBehaviour {
         hintArray[7] = "Padded Shoes protect you from being hurt by spikes, but only once per set. Use them wisely!";
         hintArray[8] = "Each Vision Down reduces enemy vision range, meaning they won't try to follow you from as far";
         hintArray[9] = "Each Vision Up increases enemy vision range, making them less likely to lose track of you.";
-        hintArray[10] = "Starting with level 5, every 5th level will be a shop where you can purchase upgrades.";
+        hintArray[10] = "Starting with level 6, every 5th level will be a shop where you can purchase upgrades.";
         hintArray[11] = "Spikes will only hurt something when it steps on them. Standing on them won't hurt until you move off.";
         hintArray[12] = "Each health pickup grants 1 health when collected. If you are at full health already, you won't collect it.";
         hintArray[13] = "Sometimes you need to sacrifice a bit of health to reach your goals.";

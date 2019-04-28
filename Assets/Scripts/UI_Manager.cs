@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour {
 
-    protected GameManager gm;
+    public GameManager gm;
 
     public Sprite HEALTH_0;
     public Sprite HEALTH_1;
@@ -25,7 +25,7 @@ public class UI_Manager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gm = FindObjectOfType<GameManager>();
+        //gm = FindObjectOfType<GameManager>();
         UpdateHP();
         UpdateStats();
 	}
@@ -151,6 +151,9 @@ public class UI_Manager : MonoBehaviour {
                 break;
             case 6:
                 levelText.text = "Fighting enemies is risky, you might get hurt!!" + "\n" + "But if you can lure two enemies together, they'll fight each other!";
+                break;
+            case 19:
+                levelText.text = "A G-G-GHOST!" + "\n" + "These enemies can pass through walls and spikes!";
                 break;
             default:
                 levelText.text = "";

@@ -19,7 +19,7 @@ public class MoveableObject : MonoBehaviour {
     internal const int ENEMY_MASK = ~(1 << 9);
 
     public bool is_moving = false;
-    protected bool is_etheral = false;
+    public bool is_etheral = false;
 
     public Vector3 move_goal;
     public GameObject health_orb;
@@ -98,11 +98,22 @@ public class MoveableObject : MonoBehaviour {
                     return false;
                 }
                 Debug.Log("Enemy duel!");
+                if(is_etheral) {
+                    if(!tr.GetComponent<MoveableObject>().is_etheral) {
+                        //Ghosts kill physical enemies, will duel other ghosts
+                        tr.GetComponent<MoveableObject>().GetHurt();
+                        return true;
+                    }
+                }
+                if(tr.GetComponent<MoveableObject>().is_etheral) {
+                    //Physical enemies can't harm ghosts
+                    return true;
+                }
                 int chance = (int)Random.Range(1, 99);
                 if(chance < 50) {
                     GetHurt();
                 } else {
-                    tr.gameObject.GetComponent<MoveableObject>().GetHurt();
+                    tr.GetComponent<MoveableObject>().GetHurt();
                 }
                 return true;
             }

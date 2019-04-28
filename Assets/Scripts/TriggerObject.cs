@@ -47,11 +47,13 @@ public class TriggerObject : MonoBehaviour {
     protected void CheckTrigger() {
         GameObject target = GetTriggerTarget();
         if(target) {
-            if(target.CompareTag("Player")){
-                player_trigger = true;
+            if(!target.GetComponent<MoveableObject>().is_etheral) {
+                if(target.CompareTag("Player")) {
+                    player_trigger = true;
+                }
+                active_trigger = true;
+                return;
             }
-            active_trigger = true;
-            return;
         }
         ResetTrigger();
     }

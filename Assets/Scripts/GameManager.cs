@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour {
     public int vampire_chance = 0;
     public int padded_shoes = 0;
 
-    public GameObject[] levelArray = new GameObject[15];
+    public GameObject[] levelArray = new GameObject[25];
 
     protected GameObject cur_level;
 
 	// Use this for initialization
 	void Start () {
         ui = FindObjectOfType<UI_Manager>();
+        ui.gm = this;
         pc = FindObjectOfType<PlayerControl>();
         ui.UpdateHP();
 

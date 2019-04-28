@@ -31,8 +31,11 @@ public class SpikeStrip : TriggerObject {
     }
 
     protected override void DoEnemyTrigger() {
+        GameObject target = GetTriggerTarget();
+        if(target.GetComponent<EnemyControl>().is_etheral) {
+            return;
+        }
         if(!requires_reset) {
-            GameObject target = GetTriggerTarget();
             target.GetComponent<EnemyControl>().GetHurt();
             requires_reset = true;
         }

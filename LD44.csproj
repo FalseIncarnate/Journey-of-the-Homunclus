@@ -293,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\EnemyControl.cs" />
+    <Compile Include="Assets\Scripts\EnemyGhost.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HealthPickup.cs" />
     <Compile Include="Assets\Scripts\HurtPickup.cs" />
