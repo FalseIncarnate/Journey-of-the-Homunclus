@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d53412fd5fcf064b871bbcc4d9d4c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hintText: {fileID: 592869611}
 --- !u!1 &592869609
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ GameObject:
   - component: {fileID: 592869612}
   - component: {fileID: 592869611}
   m_Layer: 5
-  m_Name: Reminder
+  m_Name: HintText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,9 +352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Thanks for playing, please remember to leave a review!
-
-    Comments and suggestions are also appreciated!'
+  m_Text: Need a hint?
 --- !u!222 &592869612
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOver : MonoBehaviour {
+public class WinScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

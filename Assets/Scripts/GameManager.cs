@@ -105,6 +105,10 @@ public class GameManager : MonoBehaviour {
     }
 
     void GameOver(bool win = false) {
-        SceneManager.LoadScene("gameOver");
+        if(win) {
+            SceneManager.LoadScene("winScreen");
+        } else {
+            SceneManager.LoadScene("gameOver");
+        }
     }
 }
