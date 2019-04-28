@@ -22,6 +22,7 @@ public class MoveableObject : MonoBehaviour {
     protected bool is_etheral = false;
 
     public Vector3 move_goal;
+    public GameObject health_orb;
 
     // Use this for initialization
     public virtual void Start () {
@@ -70,6 +71,11 @@ public class MoveableObject : MonoBehaviour {
             if(tag == "Player") {
                 if(tr.tag == "Enemy") {
                     Debug.Log("Player killed enemy in melee!");
+                    int vamp_roll = (int)Random.Range(1, 99);
+                    if(vamp_roll <= gm.vampire_chance) {
+                        GameObject health_drop = Instantiate(health_orb);
+                        health_drop.transform.position = tr.position;
+                    }
                     tr.GetComponent<MoveableObject>().GetHurt();
                     return true;
                 }
@@ -78,8 +84,13 @@ public class MoveableObject : MonoBehaviour {
                 if(tr.tag == "Player") {
                     Debug.Log("Enemy attacked player in melee!");
                     int parry_roll = (int)Random.Range(1, 99);
-                    if(parry_roll >= gm.parry_chance) {
+                    if(parry_roll <= gm.parry_chance) {
                         Debug.Log("Player parried!");
+                        int vamp_roll = (int)Random.Range(1, 99);
+                        if(vamp_roll <= gm.vampire_chance) {
+                            GameObject health_drop = Instantiate(health_orb);
+                            health_drop.transform.position = tr.position;
+                        }
                         GetHurt();
                     } else {
                         gm.AdjustHP(-1);

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
 
     public int sightMod = 0;
     public int parry_chance = 5;
+    public int vampire_chance = 0;
+    public int padded_shoes = 0;
 
     public GameObject[] levelArray = new GameObject[15];
 
@@ -81,6 +83,11 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateParry(int amt) {
         parry_chance += amt;
+    }
+
+    public void UpdateVampire(int amt) {
+        player_MAX += amt;
+        Mathf.Min(player_MAX, 50);
     }
 
     public void LevelUp() {

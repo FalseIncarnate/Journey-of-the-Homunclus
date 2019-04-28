@@ -20,7 +20,12 @@ public class SpikeStrip : TriggerObject {
 
     protected override void DoPlayerTrigger() {
         if(!requires_reset) {
-            gm.AdjustHP(-1);
+            if(gm.padded_shoes > 0) {
+                gm.padded_shoes--;
+                gm.ui.UpdateStats();
+            } else {
+                gm.AdjustHP(-1);
+            }
             requires_reset = true;
         }
     }

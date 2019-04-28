@@ -86,6 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535fccdd187dda04d986123baa7fc14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_moving: 0
+  move_goal: {x: 0, y: 0, z: 0}
+  health_orb: {fileID: 1170706996518248, guid: 1cc685dada64a20439c8b256be8ee20c, type: 2}
 --- !u!212 &212641068222771102
 SpriteRenderer:
   m_ObjectHideFlags: 1

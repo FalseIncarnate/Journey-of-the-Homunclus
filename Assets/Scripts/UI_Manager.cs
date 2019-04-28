@@ -20,11 +20,14 @@ public class UI_Manager : MonoBehaviour {
     public Image HP_4;
 
     public Text levelText;
+    public Text parryText;
+    public Text shoesText;
 
     // Use this for initialization
     void Start () {
         gm = FindObjectOfType<GameManager>();
         UpdateHP();
+        UpdateStats();
 	}
 	
 	// Update is called once per frame
@@ -166,6 +169,25 @@ public class UI_Manager : MonoBehaviour {
             case "Orb_Max_Up":
                 levelText.text = "Orb Max Up: Increases your max health by adding a new orb." + "\n" + "Costs " + cost + " health.";
                 break;
+            case "Parry_Sword":
+                levelText.text = "Parry Sword: Increases your chance to counter enemy attacks." + "\n" + "Costs " + cost + " health.";
+                break;
+            case "Padded_Shoes":
+                levelText.text = "Padded Shoes: Each pair protects you from spikes once." + "\n" + "Costs " + cost + " health.";
+                break;
+            case "Vampire_Teeth":
+                levelText.text = "Vampire Teeth: Grants a chance for enemies to drop health." + "\n" + "Costs " + cost + " health.";
+                break;
         }
+    }
+
+    public void UpdateStats() {
+        parryText.text = "Parry Chance: " + gm.parry_chance + "%";
+        if(gm.padded_shoes > 0) {
+            shoesText.text = "Padded Shoes: " + gm.padded_shoes;
+        } else {
+            shoesText.text = "";
+        }
+        
     }
 }
