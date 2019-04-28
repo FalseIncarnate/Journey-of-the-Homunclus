@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4687521206102940}
   - component: {fileID: 114474081812608860}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game_Manager
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,3 +83,7 @@ MonoBehaviour:
   - {fileID: 1644530887542170, guid: deb06ac91f2d1a44e8f1689d94d9f083, type: 2}
   - {fileID: 1960589172758830, guid: a9c8b5e26212d11489e3833452cb0df8, type: 2}
   - {fileID: 1063659642942292, guid: 7d6671f77b79c1841ba4b5e12d29aef4, type: 2}
+  - {fileID: 1155471561657626, guid: 48578785c333f6a4d9355d6b90d051e7, type: 2}
+  - {fileID: 1956133012426252, guid: 980c2652e2bde814d9041a3a93908093, type: 2}
+  - {fileID: 1921862847140768, guid: 5f8b3ee79ec030b4ca43ca08ceee13ed, type: 2}
+  - {fileID: 1258243037164334, guid: 8240342fcf955634ea50cb76888c4b48, type: 2}
