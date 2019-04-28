@@ -18,7 +18,8 @@ public class LevelExit : TriggerObject {
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void Update() {
+    protected override void Update() {
+        base.Update();
         check_counter++;
         if(check_counter == CHECK_RATE) {
             if(gm.enemies_left == 0) {

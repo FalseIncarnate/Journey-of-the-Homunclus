@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -93,13 +94,17 @@ public class GameManager : MonoBehaviour {
     public void LevelUp() {
         Destroy(cur_level);
         level++;
+        if(level >= levelArray.Length) {
+            GameOver(true);
+            return;
+        }
         cur_level = Instantiate(levelArray[level]);
         pc.move_goal = Vector3.zero;
         pc.transform.position = Vector3.zero;
         ui.UpdateLevelText();
     }
 
-    void GameOver() {
-        Application.Quit();
+    void GameOver(bool win = false) {
+        SceneManager.LoadScene("gameOver");
     }
 }
